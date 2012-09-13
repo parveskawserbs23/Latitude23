@@ -16,6 +16,7 @@
     -webkit-box-shadow: none !important;
     -webkit-border-radius: none !important;
     border-radius: none !important;
+    text-align: center !important;
 }
 .nav-button-contact .ui-navbar .ui-mini
 {
@@ -27,6 +28,7 @@
     -webkit-box-shadow: none !important;
     -webkit-border-radius: none !important;
     border-radius: none !important;
+    text-align: center !important;
 }
 #architectural .ui-icon
 {
@@ -37,12 +39,12 @@
 {
     top: 10px;
 }
-#productmodeling .ui-icon
+#modeling .ui-icon
 {
     background-image: url(../icons/gaming.png);
     background-repeat: no-repeat;
 }
-#productmodeling .ui-btn-text
+#modeling .ui-btn-text
 {
     top: 10px;
 }
@@ -56,12 +58,12 @@
 {
     top: 10px;
 }
-#charactermodeling .ui-icon
+#gaming .ui-icon
 {
     background-image: url(../icons/model.png);
     background-repeat: no-repeat;
 }
-#charactermodeling .ui-btn-text
+#gaming .ui-btn-text
 {
     top: 10px;
 }
