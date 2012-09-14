@@ -406,7 +406,7 @@
                     </div>
                     <div id="webkit_movie_wrapper">
                         <p align="center">
-                            <video id="bubbles" width="480" height="360" controls="controls" src="content/animations/1.DemoReel2012.mp4"
+                            <video id="bubbles" width="480" height="360" controls="controls" src="content/animations/1.DemoReel2012.m4v"
                                 poster="">
                          </video>
                         </p>
@@ -434,7 +434,7 @@
                             <span>Demo Reel 2012 </span>
                         </div>
                         <div class="ui-block-b">
-                            <span href="#" content="content/animations/3.120830_STN_HD.m4v">
+                            <span href="#" content="content/animations/2.120830__DU_Enrgy_NEWcut.mp4">
                                 <img src="content/icons/2.png" width="70%" /></span><br />
                             <span>Danish Management group </span>
                         </div>
@@ -455,19 +455,19 @@
                         </div>
                         <!-- Add Second Row -->
                         <div class="ui-block-a">
-                            <span href="#" content="content/animations/3.120830_STN_HD.m4v">
+                            <span href="#" content="content/animations/4.120830_KinderGarden_Newcut.mp4">
                                 <img src="content/icons/4.png" width="70%" />
                             </span>
                             <br />
                             <span>Kindergarden </span>
                         </div>
                         <div class="ui-block-b">
-                            <span href="#" content="content/animations/3.120830_STN_HD.m4v">
+                            <span href="#" content="content/animations/5.AL_Gulshan_FULL.mp4">
                                 <img src="content/icons/5.png" width="70%" /></span><br />
                             <span>Gulshan Rasidence </span>
                         </div>
                         <div class="ui-block-c">
-                            <span href="#" content="content/animations/3.120830_STN_HD.m4v">
+                            <span href="#" content="content/animations/6.Forum.mp4">
                                 <img src="content/icons/6.png" width="70%" /></span><br />
                             <span>Forum </span>
                         </div>
@@ -553,7 +553,7 @@
                     break;
                 case 'modeling':
                     $('#content div#modelingContent').show();
-                    readDeviceOrientation();
+                    readDeviceOrientation('model');
                     HideHeader();
                     break;
                 case 'animation':
@@ -562,7 +562,7 @@
                     break;
                 case 'gaming':
                     $('#content div#gamingContent').show();
-                    readDeviceOrientation();
+                    readDeviceOrientation('game');
                     HideHeader();
                     break;
                 case 'contacts':
@@ -608,9 +608,9 @@
             $('#movie').show();
             //             $("#videoplayer>source").attr("src", "content/animations/120522_Riedmatt_Center_HD_264.mp4"​​​​)​
             var a = $(this).attr('content');
-           
             loadAnotherVideo(a);
-            //$("#movie").load("/ #pageinfo");
+            //$("#movie").load("/#pageinfo");
+            $("#movie").load("/#pageinfo");
             $('#videothumbframe').hide();
         });
         $('#goback').click(function () {
@@ -665,28 +665,58 @@
         }
         window.onorientationchange = readDeviceOrientation;
 
-        function readDeviceOrientation() {
+        function readDeviceOrientation(para) {
             // window.location.reload();
 
             switch (window.orientation) {
                 case 0:
                     // Portrait
-                    LoadPotaitGallary(768);
+                   
                     //alert('Portrait');
+                    if (para != null || para != undefined) {
+                        if (para == 'game' || para == 'model') {
+                            LoadPotaitGallaryExtend(768);
+                        }
+                    }
+                    else {
+                        LoadPotaitGallary(768);
+                    }
                     break;
                 case 180:
                     // Portrait (Upside-down)
-                    LoadPotaitGallary(768);
+                    if (para != null || para != undefined) {
+                        if (para == 'game' || para == 'model') {
+                            LoadPotaitGallaryExtend(768);
+                        }
+                    }
+                    else {
+                        LoadPotaitGallary(768);
+                    }
                     //alert('Portrait');
                     break;
                 case -90:
                     // Landscape (Clockwise)
-                    LoadLandScapeGallary();
+                    if (para != null || para != undefined) {
+                        if (para == 'game' || para == 'model') {
+                            LoadLandScapeGallaryExtend()();
+                        }
+                    }
+                    else {
+                        LoadLandScapeGallary();
+                    }
                     //alert('Landscape');
                     break;
                 case 90:
                     // Landscape  (Counterclockwise)
-                    LoadLandScapeGallary();
+                    // Landscape (Clockwise)
+                    if (para != null || para != undefined) {
+                        if (para == 'game' || para == 'model') {
+                            LoadLandScapeGallaryExtend()();
+                        }
+                    }
+                    else {
+                        LoadLandScapeGallary();
+                    }
                     //alert('Landscape');
                     break;
                 default:
@@ -738,6 +768,40 @@
                 });
             });
         }
+        function LoadPotaitGallaryExtend(para) {
+            $('#contractUsContent').css("margin-top", "40%");
+            $('#splashLogo').attr("src", "content/welcome/HomeVertical.jpg");
+            loadsplashScreen(para);
+
+            jQuery(document).ready(function ($) {
+                $('.royalSlider').royalSlider({
+                    imageAlignCenter: true,
+                    imageScaleMode: "fit",
+                    hideArrowOnLastSlide: false,
+                    slideSpacing: 20,
+                    autoScaleSlider: true,
+                    autoScaleSliderWidth: 120,
+                    autoScaleSliderHeight: 139
+                });
+            });
+        }
+        function LoadLandScapeGallaryExtend() {
+            $('#contractUsContent').css("margin-top", "20%");
+            $('#splashLogo').attr("src", "content/welcome/HomeHorizontal.jpg");
+            loadsplashScreen();
+
+            jQuery(document).ready(function ($) {
+                $('.royalSlider').royalSlider({
+                    imageAlignCenter: true,
+                    imageScaleMode: "fit",
+                    hideArrowOnLastSlide: false,
+                    slideSpacing: 20,
+                    autoScaleSlider: true,
+                    autoScaleSliderWidth: 120,
+                    autoScaleSliderHeight: 75
+                });
+            });
+        }
         function loadAnotherVideo(videourl) {
             var video = document.getElementsByTagName('video')[0];
             // var sources = video.getElementsByTagName('source');
@@ -770,20 +834,17 @@
             var h = $(window).height();
             h = h - $('#footer').height() + $('#topbar').height();
             $('#splashLogo').height(h);
-            alert('load : ' + h);
         }
         function setLineHeight() {
             $(document).height();
             $('#content').css("line-height", $(document).height() - 158 + "px");
         }
         function loadsplashScreenOrientation(w) {
-
             //Ipad LandScape Only for Load Time
             if (w == '1') {
                 $('#splashscreentable').height('700px');
                 $('#emailtable').height('700px');
                 $('#splashLogo').width(w + 'px');
-
             }
             //Ipad Portrait Only for Load Time
             else if (w == '0') {
@@ -791,11 +852,7 @@
                 $('#splashscreentable').height('950px');
                 $('#emailtable').height('900px');
                 $('#splashLogo').width(w + 'px');
-
-
             }
-
-
         }
         function loadsplashScreen(parameter) {
             var w = $(document).width();
